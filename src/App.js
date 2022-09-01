@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+
+import apiCall from './services/apiCall'
 
 const useField = (type) => {
   const [value, setValue] = useState('')
@@ -18,7 +19,9 @@ const useField = (type) => {
 const useResource = (baseUrl) => {
   const [resources, setResources] = useState([])
 
-  // ...
+  useEffect(()=>{ apiCall.getAll(baseUrl).then(data=> 
+    setResources(data))},[baseUrl])
+ 
 
   const create = (resource) => {
     // ...
