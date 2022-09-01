@@ -24,7 +24,7 @@ const useResource = (baseUrl) => {
  
 
   const create = (resource) => {
-    // ...
+    apiCall.create(resource,baseUrl).then(response => setResources([...resources,response]))
   }
 
   const service = {
